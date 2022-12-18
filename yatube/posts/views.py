@@ -1,9 +1,18 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-# Create your views here.
-def index(request):    
-    return HttpResponse('Главная страница')
+def index(request):
+    template = 'posts/index.html'
+    title = 'Последние обновления на сайте'
+    context = {
+        title: title,
+    }
+    return render(request, template, context)
 
 def group_posts(request, slug):
-    return HttpResponse(f'Посты из группы {slug}')
+    template = 'posts/group_list.html'
+    title = 'Лев Толстой – зеркало русской революции.'
+    context = {
+        title: title,
+    }
+    return render(request, template, context)

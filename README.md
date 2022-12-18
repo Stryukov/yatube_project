@@ -1,7 +1,7 @@
 # Yatube project
 ### Description
 Social network for bloggers
-### Technology
+### Technology 
 Python 3.9
 Django 2.2.19
 ### How to run
