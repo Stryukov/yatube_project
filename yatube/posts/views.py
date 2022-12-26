@@ -1,9 +1,11 @@
 from django.shortcuts import render, get_object_or_404
+
 from .models import Post, Group
+from yatube.settings import POST_VIEW_COUNT
 
 
 def index(request):
-    posts = Post.objects.order_by('-pub_date')[:10]
+    posts = Post.objects.all()[:POST_VIEW_COUNT]
     context = {
         'title': 'Последние обновления на сайте',
         'posts': posts,
@@ -13,7 +15,7 @@ def index(request):
 
 def group_posts(request, slug):
     group = get_object_or_404(Group, slug=slug)
-    posts = Post.objects.filter(group=group).order_by('-pub_date')[:10]
+    posts = group.posts.all()[:POST_VIEW_COUNT]
     context = {
         'group': group,
         'posts': posts
